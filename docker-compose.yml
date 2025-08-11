@@ -1,0 +1,28 @@
+services:
+  web-server:
+    build: .
+    container_name: arch-lighttpd
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certs:/etc/letsencrypt
+      - ./html:/srv/http
+
+  certbot-init:
+    image: certbot/certbot
+    container_name: certbot-init
+    depends_on:
+      - web-server
+    environment:
+      - DOMAIN=${DOMAIN}
+      - EMAIL=${EMAIL}
+    volumes:
+      - certs:/etc/letsencrypt
+      - ./html:/srv/http
+      - ./certbot-init.sh:/certbot-init.sh:ro
+    entrypoint: ""
+    command: ["/bin/sh", "/certbot-init.sh"]
+
+volumes:
+  certs:
