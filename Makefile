@@ -1,10 +1,11 @@
-all: run
-
 run:
 	docker compose up --build
 
-stop:
-	docker compode down
+deploy:
+	docker compose up --build -d
 
-.PHONY: all run stop
-.DEFAULT_GOAL := all
+stop:
+	docker compose down
+
+.PHONY: run deploy stop
+.DEFAULT_GOAL := run

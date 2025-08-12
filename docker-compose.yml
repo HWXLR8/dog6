@@ -8,21 +8,12 @@ services:
     volumes:
       - certs:/etc/letsencrypt
       - ./html:/srv/http
-
-  certbot-init:
-    image: certbot/certbot
-    container_name: certbot-init
-    depends_on:
-      - web-server
+      - ./certbot-init.sh:/certbot-init.sh:ro
+      - ./entrypoint.sh:/entrypoint.sh:ro
     environment:
       - DOMAIN=${DOMAIN}
       - EMAIL=${EMAIL}
-    volumes:
-      - certs:/etc/letsencrypt
-      - ./html:/srv/http
-      - ./certbot-init.sh:/certbot-init.sh:ro
-    entrypoint: ""
-    command: ["/bin/sh", "/certbot-init.sh"]
+    entrypoint: ["/entrypoint.sh"]
 
 volumes:
   certs:
