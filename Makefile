@@ -1,18 +1,10 @@
-IMAGE = arch-lighttpd
-
-all: build run
-
-build:
-	docker build -t $(IMAGE) .
+all: run
 
 run:
-	docker run -p 80:80 $(IMAGE)
+	docker compose up --build
 
-clean:
-	docker rm -f $$(docker ps -aq --filter ancestor=$(IMAGE)) || true
-	docker rmi -f $(IMAGE) || true
-	docker image prune -f
-	docker rmi -f $$(docker images -f "dangling=true" -q) || true
+stop:
+	docker compode down
 
-.PHONY: all build run clean
+.PHONY: all run stop
 .DEFAULT_GOAL := all
