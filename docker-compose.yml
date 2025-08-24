@@ -7,12 +7,9 @@ services:
       - "443:443"
     volumes:
       - certs:/etc/letsencrypt
-      - ./html:/srv/http
+      - ./http:/srv/http
       - ./certbot-init.sh:/certbot-init.sh:ro
       - ./entrypoint.sh:/entrypoint.sh:ro
-    environment:
-      - DOMAIN=${DOMAIN}
-      - EMAIL=${EMAIL}
     entrypoint: ["/entrypoint.sh"]
 
 volumes:

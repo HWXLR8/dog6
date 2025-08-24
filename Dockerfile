@@ -15,7 +15,7 @@ RUN mkdir -p /srv/http /etc/letsencrypt/live/dog6.net \
        -keyout /etc/letsencrypt/live/dog6.net/dummy.key \
         -out /etc/letsencrypt/live/dog6.net/dummy.crt \
         -subj "/CN=dog6.net" \
-    # Combine them into lighttpd.pem \
+    # combine them into lighttpd.pem \
     && cat /etc/letsencrypt/live/dog6.net/dummy.key \
         /etc/letsencrypt/live/dog6.net/dummy.crt > \
         /etc/letsencrypt/live/dog6.net/lighttpd.pem
