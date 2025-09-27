@@ -3,7 +3,7 @@
 set -e
 
 HOST=dog6.net
-DOMAINS="dog6.net obese.dog6.net"
+DOMAINS="dog6.net obese.dog6.net git.dog6.net"
 EMAIL=test@dog6.net
 
 CERT_DIR="/etc/letsencrypt/live/$HOST"
