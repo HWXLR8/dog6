@@ -9,9 +9,6 @@ services:
       - certs:/etc/letsencrypt
       - repos:/srv/git:ro
       - ./http:/srv/http
-      - ./cgitrc:/etc/cgitrc:ro
-      - ./certbot-init.sh:/certbot-init.sh:ro
-      - ./entrypoint.sh:/entrypoint.sh:ro
     entrypoint: ["/entrypoint.sh"]
     depends_on:
       - myr

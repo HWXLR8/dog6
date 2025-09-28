@@ -9,6 +9,10 @@ RUN pacman -Syu --noconfirm \
     && pacman -Scc --noconfirm
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY cgit/cgitrc /etc/cgitrc
+COPY cgit/cgit.css /usr/share/webapps/cgit/cgit.css
+COPY certbot-init.sh /certbot-init.sh
+COPY entrypoint.sh /entrypoint.sh
 
 RUN mkdir -p /srv/http /etc/letsencrypt/live/dog6.net \
     # create dummy self-signed cert and key \

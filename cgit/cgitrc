@@ -2,3 +2,6 @@ remove-suffix=1
 enable-index-owner=0
 scan-path=/srv/git/
 virtual-root=/
+
+root-title=dog6 mirror
+root-desc=a mirror for cool shit
