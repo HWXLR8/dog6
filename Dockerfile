@@ -1,12 +1,11 @@
-FROM archlinux:latest
+FROM alpine:3.20
 
-RUN pacman -Syu --noconfirm \
+RUN apk add --no-cache \
     lighttpd \
     certbot \
     openssl \
     cgit \
-    bash \
-    && pacman -Scc --noconfirm
+    bash
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY cgit/cgitrc /etc/cgitrc

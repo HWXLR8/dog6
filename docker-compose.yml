@@ -16,6 +16,7 @@ services:
   myr:
     image: python:3.12-alpine
     container_name: myr
+    init: true
     working_dir: /
     volumes:
       - repos:/srv/git
