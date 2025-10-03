@@ -9,7 +9,7 @@ RUN apk add --no-cache \
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY cgit/cgitrc /etc/cgitrc
-COPY cgit/cgit.css /usr/share/webapps/cgit/cgit.css
+COPY cgit/cgit.css cgit/favicon.ico cgit/logo.png /usr/share/webapps/cgit/
 COPY certbot-init.sh /certbot-init.sh
 COPY entrypoint.sh /entrypoint.sh
 
