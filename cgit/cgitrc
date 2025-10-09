@@ -1,9 +1,9 @@
 remove-suffix=1
 enable-index-owner=0
+repository-sort=age
 scan-path=/srv/git/
 virtual-root=/
-
 root-title=dog6 mirror
 root-desc=I'm fine with this.
-logo=logo.png
-favicon=favicon.ico
+logo=/logo.png
+favicon=/favicon.ico
