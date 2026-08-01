@@ -17,6 +17,7 @@ is_production_cert() {
     issuer="$(openssl x509 -in "$FULLCHAIN" -noout -issuer)"
     echo "$issuer" | grep -q "Let's Encrypt" || return 1
     echo "$issuer" | grep -q "(STAGING)" && return 1
+    openssl x509 -checkend 0 -noout -in "$FULLCHAIN" || return 1
     return 0
 }
 
