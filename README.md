@@ -12,6 +12,7 @@ It runs:
 
 - `dog6.net` serves `http/dog6.net`
 - `obese.dog6.net` serves `http/obese`
+- `blog.dog6.net` serves `http/blog`
 - `git.dog6.net` serves mirrored Git repos with cgit
 - `box.dog6.net` serves a read-only directory listing from `BOX_DIR`
 
