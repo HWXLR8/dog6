@@ -9,6 +9,7 @@ services:
       - certs:/etc/letsencrypt
       - repos:/srv/git:ro
       - ./http:/srv/http
+      - ${BOX_DIR:-./box}:/srv/box:ro
     entrypoint: ["/entrypoint.sh"]
     depends_on:
       - myr

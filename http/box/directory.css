@@ -1,0 +1,73 @@
+:root {
+    color-scheme: dark;
+    color: #ccc;
+    background: #000;
+}
+
+body {
+    margin: 8px;
+    font-family: monospace;
+    line-height: 1.4;
+    color: #ccc;
+    background: #000;
+}
+
+table {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    grid-auto-flow: row dense;
+    column-gap: 2em;
+    font-family: monospace;
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+}
+
+th,
+td {
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    white-space: nowrap;
+}
+
+thead th {
+    padding-bottom: 1.4em;
+}
+
+.n {
+    grid-column: 1;
+}
+
+.s {
+    grid-column: 2;
+}
+
+.m {
+    grid-column: 3;
+}
+
+.t {
+    grid-column: 4;
+}
+
+a,
+a:visited {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+tbody a {
+    text-decoration: none;
+}
+
+.sortarrow {
+    display: none;
+}
+
+div.foot {
+    display: none;
+}

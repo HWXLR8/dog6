@@ -13,6 +13,7 @@ It runs:
 - `dog6.net` serves `http/dog6.net`
 - `obese.dog6.net` serves `http/obese`
 - `git.dog6.net` serves mirrored Git repos with cgit
+- `box.dog6.net` serves a read-only directory listing from `BOX_DIR`
 
 ## Run
 
@@ -31,6 +32,18 @@ Stop:
 ```sh
 make stop
 ```
+
+## File box
+
+`box.dog6.net` provides a public, read-only directory listing. By default it
+serves the local `box` directory. Set `BOX_DIR` to serve another host path:
+
+```sh
+BOX_DIR=/srv/files make deploy
+```
+
+The directory must be readable by Docker. Add a DNS record for `box.dog6.net`
+before deploying so Certbot can validate the hostname.
 
 ## Certificates
 

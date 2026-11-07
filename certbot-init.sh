@@ -3,7 +3,7 @@
 set -e
 
 HOST=dog6.net
-DOMAINS="dog6.net obese.dog6.net git.dog6.net"
+DOMAINS="dog6.net obese.dog6.net git.dog6.net box.dog6.net"
 EMAIL=test@dog6.net
 
 CERT_DIR="/etc/letsencrypt/live/$HOST"
@@ -21,6 +21,14 @@ is_production_cert() {
     return 0
 }
 
+certificate_covers_domains() {
+    for domain in $DOMAINS; do
+        openssl x509 -in "$FULLCHAIN" -noout -checkhost "$domain" \
+            >/dev/null 2>&1 || return 1
+    done
+    return 0
+}
+
 # generate args so certbot will request a cert for each
 # domain+subdomain
 DOMAIN_ARGS=""
@@ -28,8 +36,16 @@ for d in $DOMAINS; do
     DOMAIN_ARGS="$DOMAIN_ARGS -d $d"
 done
 
-if is_production_cert; then
+if is_production_cert && certificate_covers_domains; then
     echo "Production certificate already exists for $DOMAINS, skipping request"
+elif is_production_cert; then
+    echo "Expanding production certificate to cover $DOMAINS..."
+    certbot certonly \
+            --webroot --webroot-path=/srv/http \
+            --cert-name "$HOST" --expand \
+            $DOMAIN_ARGS \
+            --email "$EMAIL" \
+            --agree-tos --noninteractive
 else
     echo "Deleting existing certificate if exists..."
     rm -rfv /etc/letsencrypt/live/dog6.net || true
